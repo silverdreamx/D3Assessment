@@ -9,7 +9,7 @@
   "test": {
     "username": "root",
     "password": "mySQLpa55w0rD",
-    "database": "d3assessment_test",
+    "database": "d3assessment_dev",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

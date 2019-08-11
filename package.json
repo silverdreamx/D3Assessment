@@ -4,7 +4,7 @@
   "description": "NodeJS API Assessment for GovTech D3 Hiring",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/silverdreamx/D3Assessment#readme",
   "dependencies": {
+    "async": "^3.1.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
@@ -28,6 +29,9 @@
     "sequelize-cli": "^5.5.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "mocha": "^6.2.0",
+    "nodemon": "^1.19.1",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2"
   }
 }
