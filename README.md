@@ -23,7 +23,7 @@ This set of code is hosted at the following url: [http://18.139.165.226](http://
 You need to install the following:
 
 1. [Node.js v10.16.2](https://nodejs.org/dist/v10.16.2/)
-2. [MySQL Community Server v8.0.17] (https://dev.mysql.com/downloads/mysql/)
+2. [MySQL Community Server v8.0.17](https://dev.mysql.com/downloads/mysql/)
 
 After installing and pulling the source code from here, please navigate to the root directory of this repository and run the following commands:
 
