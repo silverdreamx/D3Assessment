@@ -107,5 +107,43 @@ module.exports = {
             console.log('error! no input parameters to find student list!');
             return res.status(400).send({message: 'no input teacher parameter to find student list'});
         }
+    },
+
+    suspendStudent(req, res) {
+        if (!req.body.hasOwnProperty('student'))
+            return res.status(400).send({message: 'no input student parameter!'});
+        
+        var student = req.body.student;
+        if (student.length == 0)
+            return res.status(400).send({message: 'invalid input student parameter!'});
+        else {
+            // find all entries with student email and turn off active flag
+            Maillist.update(
+                {active: 0},
+                {where: {
+                    [Sequelize.Op.and]: [
+                        {student: student},
+                        {active: 1}]
+                    }
+                }
+            )
+            .then((result) => {
+                console.log('result = ', result);
+                if (result > 0) {
+                    console.log('successfully suspended student ', student);
+                    return res.status(204).send();
+                }
+                else 
+                    return res.status(400).send({message: 'no one to suspend with student email ' + student});
+            })
+            .catch((err) => {
+                console.log('error! err = ', err);
+                return res.status(400).send({message: err});
+            });
+        }
+    },
+
+    retrieveListForNotifications(req, res) {
+        return res.status(200).send({message: 'not implemented yet!'});
     }
 };
