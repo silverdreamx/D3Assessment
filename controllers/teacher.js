@@ -1,3 +1,5 @@
+var sequelize = require('../models').sequelize;
+var Sequelize = require('../models').Sequelize;
 var Maillist = require('../models').maillist;
 
 module.exports = {
@@ -56,6 +58,54 @@ module.exports = {
             console.log('error! ', errorMsg);
             // send HTTP 400 bad request error response
             return res.status(400).send({message: errorMsg});
+        }
+    },
+
+    getMaillist(req, res) {
+        let teacher;
+        if (req.query.teacher)
+            teacher = req.query.teacher;
+        else
+            teacher = "";
+
+        if (teacher.length > 0) {
+            console.log('input teacher parameters: ', teacher);
+            teacherList = [];
+            if (typeof(teacher) == "string") {
+                teacherList.push(teacher);
+            } else {
+                teacherList = teacher;
+            }
+
+            if (teacherList.length >= 1) {
+                Maillist.findAll({
+                    attributes: ['student'],
+                    where: {
+                        teacher: teacherList
+                    },
+                    group: ['student'],
+                    having: Sequelize.literal('COUNT(student) = '+ teacherList.length)
+                })
+                .then((result) => {
+                    console.log('input teacherList = ', teacherList);
+                    console.log('result = ', result);
+                    var studentList = [];
+                    for (var index = 0; index < result.length; ++index)
+                        studentList.push(result[index].student);
+
+                    return res.status(200).send({students: studentList});
+                }).catch ((err) => {
+                    console.log('error! err = ', err);
+                    return res.status(400).send({message: err});
+                });
+            } else {
+                console.log('error! invalid input teacher parameter(s) : ', teacher);
+                return res.status(400).send({message: 'invalid input teacher parameter(s)!'});
+            }
+        }
+        else {
+            console.log('error! no input parameters to find student list!');
+            return res.status(400).send({message: 'no input teacher parameter to find student list'});
         }
     }
 };

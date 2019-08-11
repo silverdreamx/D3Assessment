@@ -16,4 +16,7 @@ module.exports = (app) => {
 
     // User story 1: teacher registering students
     app.post('/api/register', teacherController.createMaillist);
+
+    // User story 2: teacher retrieving list of students
+    app.get('/api/commonstudents', teacherController.getMaillist);
 }
