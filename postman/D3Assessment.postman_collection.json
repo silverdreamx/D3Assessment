@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "8185f011-043e-4bd0-9b43-51e09d551f7f",
+		"name": "D3Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tests",
+			"item": [
+				{
+					"name": "User Story 1",
+					"item": [
+						{
+							"name": "Example 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"teacher\": \"teachermay@gmail.com\",\n\t\"students\": [\n\t\t\"studentjon@gmail.com\"\n\t]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Example 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"teacher\": \"teacherjoe@gmail.com\",\n\t\"students\": [\n\t\t\"studentjon@gmail.com\",\n\t\t\"studenthon@gmail.com\"\n\t]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Example 3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"teacher\": \"teacherken@gmail.com\",\n\t\"students\": [\n\t\t\"studentjon@gmail.com\",\n\t\t\"studenthon@gmail.com\",\n\t\t\"student_only_under_teacherken@gmail.com\"\n\t]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User Story 2",
+					"item": [
+						{
+							"name": "Example 1",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/commonstudents?teacher=teacherken%40gmail.com&teacher=teacherjoe%40gmail.com",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"commonstudents"
+									],
+									"query": [
+										{
+											"key": "teacher",
+											"value": "teacherken%40gmail.com"
+										},
+										{
+											"key": "teacher",
+											"value": "teacherjoe%40gmail.com"
+										},
+										{
+											"key": "teacher",
+											"value": "teachermay%40gmail.com",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User Story 3",
+					"item": [
+						{
+							"name": "Example 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"student\": \"student_only_under_teacherken@gmail.com\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/suspend",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"suspend"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User Story 4",
+					"item": [
+						{
+							"name": "Example 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"teacher\": \"\",\n\t\"notification\": \"Hello world!\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/retrievefornotifications",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"retrievefornotifications"
+									]
+								},
+								"description": "User Story 4:\nAs a teacher, I want to retrieve a list of students who can receive a given notification."
+							},
+							"response": []
+						},
+						{
+							"name": "Example 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"teacher\": \"teacherken@gmail.com\",\n\t\"notification\": \"Hello world! @someone@gmail.com @me with some trailing text here\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/retrievefornotifications",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"retrievefornotifications"
+									]
+								},
+								"description": "User Story 4:\nAs a teacher, I want to retrieve a list of students who can receive a given notification."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "User Story 1 > /api/commonstudents",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/commonstudents",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"commonstudents"
+					],
+					"query": [
+						{
+							"key": "teacher",
+							"value": "teacherken@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "teacher",
+							"value": "teacherjoe@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "teacher",
+							"value": "teachermay@gmail.com",
+							"disabled": true
+						}
+					]
+				},
+				"description": "User story 2:\nAs a teacher, I want to retrieve a list of students common to a given list of teachers"
+			},
+			"response": []
+		},
+		{
+			"name": "User Story 2 > /api/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"teacher\": \"teachermay@gmail.com\",\n\t\"students\": [\n\t\t\"studentjon@gmail.com\"\n\t]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "User story 1:\nAs a teacher, I want to register one or more students to a specified teacher."
+			},
+			"response": []
+		},
+		{
+			"name": "User Story 3 > /api/suspend",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"student\": \"student_only_under_teacherken@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/suspend",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"suspend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Story 4 > /api/retrievefornotifications",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"teacher\": \"teacherken@gmail.com\",\n\t\"notification\": \"Hello world! @someone@gmail.com @me some other message here\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/retrievefornotifications",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"retrievefornotifications"
+					]
+				},
+				"description": "User Story 4:\nAs a teacher, I want to retrieve a list of students who can receive a given notification."
+			},
+			"response": []
+		}
+	]
+}
