@@ -16,7 +16,7 @@ module.exports = {
             return models.sequelize.sync({force: true});
         }).then(function() {
             console.log('>> successfully wiped database!');
-            if (done) done();
+            if (done) setTimeout(() => done(), 100);
             return models.sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
         }).catch(function(err) {
             console.log('>> error cleaning database!');
@@ -59,25 +59,28 @@ module.exports = {
 
         var Maillist = require('../../models').maillist;
 
-        Maillist.bulkCreate(newMaillist, {returning: true, validate: true})
-        .then((result) => {
-            console.log('>> added dummy data!');
-            if (done) done();
-        }).catch((error) => {
-            console.log('>> error when trying to add dummy data!');
-            if (done) done();
-        });
+        setTimeout(() => {
+            Maillist.bulkCreate(newMaillist, {returning: true, validate: true})
+            .then((result) => {
+                console.log('>> added dummy data!');
+                if (done) setTimeout(() => done(), 1000);
+            }).catch((error) => {
+                console.log('>> error when trying to add dummy data!');
+                if (done) done();
+            });
+        }, 500);
     },
 
     cleanWithSomeDummyDataInDatabase(done) {
         this.cleanDatabases(this.addDummyDataIntoDatabase(done));
     },
 
-    stopServer(done, server) {
+    stopServer(server, done = null) {
         // force shutting down server at the end of each test
         server.close();
         console.log('>> server closed!');
-        done();
+        if (done) 
+            setTimeout(() => done(), 1000);
     }
 
 };
