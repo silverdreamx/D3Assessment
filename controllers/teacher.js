@@ -144,6 +144,66 @@ module.exports = {
     },
 
     retrieveListForNotifications(req, res) {
-        return res.status(200).send({message: 'not implemented yet!'});
+        if (!req.body.hasOwnProperty('teacher')) {
+            return res.status(400).send({message: 'no input for teacher parameter!'});
+        }
+
+        if (!req.body.hasOwnProperty('notification')) {
+            return res.status(400).send({message: 'no input for notification parameter!'});
+        }
+
+        var teacherEmail = req.body.teacher;
+        var notification = req.body.notification;
+        var studentList = [];
+
+        if (typeof(teacherEmail) != "string") {
+            return res.status(400).send({message: 'invalid input for teacher parameter!'});
+        } else if (teacherEmail.length == 0) {
+            return res.status(400).send({message: 'input teacher parameter is empty!'});
+        }
+
+        // process @mentions in notification first
+        var startIndex = 0;
+        var currStudentStartIndex = notification.indexOf('@', startIndex);
+        while (currStudentStartIndex > 0 && currStudentStartIndex < notification.length) {
+            var tarEndIndex = notification.indexOf(' ', currStudentStartIndex + 1);
+            let currStudent;
+            if (tarEndIndex > currStudentStartIndex) {
+                currStudent = notification.substr(currStudentStartIndex + 1, tarEndIndex - currStudentStartIndex - 1);
+            } else {
+                // some error with format, take it that it'll go all the way to the end of the string
+                currStudent = notification.substr(currStudentStartIndex + 1);
+                tarEndIndex = notification.length;
+            }
+
+            if (!studentList.includes(currStudent))
+                studentList.push(currStudent);
+
+            currStudentStartIndex = notification.indexOf('@', tarEndIndex);
+        }
+
+        // run sql query for list of students registered and not suspended to teacher
+        Maillist.findAll({
+            attributes: ['student'],
+            where: {
+                teacher: teacherEmail,
+                active: 1
+            }
+        })
+        .then((result) => {
+            if (result.length > 0) {
+                for (var i = 0; i < result.length; ++i) {
+                    if (!studentList.includes(result[i].student))
+                        studentList.push(result[i].student);
+                }
+            }
+            console.log('successfully retrieved studentList: ', studentList);
+
+            return res.status(200).send({recipients: studentList});
+        })
+        .catch((err) => {
+            console.log('error executing query! err = ', err);
+            return res.status(400).send({message: err});
+        });
     }
 };
