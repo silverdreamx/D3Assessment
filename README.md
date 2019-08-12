@@ -3,8 +3,7 @@
 This is the source code for my submission for GovTech's D3 Hiring NodeJS API Assessment. There are several ways to get the code up and running for your testing purposes:
 
 1. Run straight from a hosted server
-2. Run from a Docker container
-3. Run the server locally on your machine
+2. Run the server locally on your machine
 
 
 ### 1. Run from hosted server
@@ -15,11 +14,7 @@ This set of code is hosted at the following url: [http://18.139.165.226](http://
 3. POST [http://18.139.165.226/api/suspend](http://18.139.165.226/api/suspend)
 4. POST [http://18.139.165.226/api/retrievefornotifications](http://18.139.165.226/api/retrievefornotifications)
 
-### 2. Run from a Docker container
--- todo
-
-
-### 3. Setting up the source code on your local machine
+### 2. Setting up the source code on your local machine
 You need to install the following:
 
 1. [Node.js v10.16.2](https://nodejs.org/dist/v10.16.2/)
