@@ -35,6 +35,12 @@ You can also run the unit tests by using the following command:
 
     npm test
 
+You can now access the APIs at the following URLs:
+1. POST [http://localhost:8000/api/register](http://localhost:8000/api/register)
+2. GET [http://localhost:8000/api/commonstudents](http://localhost:8000/api/commonstudents)
+3. POST [http://localhost:8000/api/suspend](http://localhost:8000/api/suspend)
+4. POST [http://localhost:8000/api/retrievefornotifications](http://localhost:8000/api/retrievefornotifications)
+
 
 ## API Endpoint Testing 
 If you have installed [Postman](https://www.getpostman.com/), you can access the API collection and environment in the `/postman` folder in the source code, by using the Import function in the application.

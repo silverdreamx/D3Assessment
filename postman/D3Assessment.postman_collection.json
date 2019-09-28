@@ -252,7 +252,7 @@
 			]
 		},
 		{
-			"name": "User Story 1 > /api/commonstudents",
+			"name": "User Story 2 > /api/commonstudents",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -296,7 +296,7 @@
 			"response": []
 		},
 		{
-			"name": "User Story 2 > /api/register",
+			"name": "User Story 1 > /api/register",
 			"request": {
 				"method": "POST",
 				"header": [
