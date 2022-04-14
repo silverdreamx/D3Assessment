@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/silverdreamx/D3Assessment#readme",
   "dependencies": {
-    "async": "^3.1.0",
+    "async": "^3.2.2",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
