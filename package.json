@@ -21,8 +21,8 @@
   "homepage": "https://github.com/silverdreamx/D3Assessment#readme",
   "dependencies": {
     "async": "^3.1.0",
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
     "morgan": "^1.9.1",
     "mysql2": "^1.6.5",
     "sequelize": "^5.13.0",
